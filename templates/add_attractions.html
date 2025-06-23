@@ -17,7 +17,20 @@
             <p><b>Day {{ plan['day'] }}</b></p>
             <ul>
                 {% for attr in plan['attractions'] %}
-                    <li>{{ attr }}</li>
+                    <li>
+                        <div class="attr-row">
+                            <!-- Modify attraction -->
+                            <form method="POST" action="{{ url_for('edit_attraction', trip_id=trip_id, plan_id=plan_id, attr_index=loop.index0) }}" style="display:inline;">
+                                <input type="text" name="new_attraction" value="{{ attr }}" required>
+                                <button class="modify-attr-btn" type="submit">Modify</button>
+                            </form>
+    
+                            <!-- Delete attraction -->
+                            <form method="POST" action="{{ url_for('delete_attraction', trip_id=trip_id, plan_id=plan_id, attr_index=loop.index0) }}" style="display:inline;">
+                                <button class="delete-attr-btn" type="submit" onclick="return confirm('Are you sure you want to delete this attraction?')">Delete</button>
+                            </form>
+                        </div>
+                    </li>
                 {% else %}
                     <li><i>No attractions yet.</i></li>
                 {% endfor %}

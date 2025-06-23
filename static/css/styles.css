@@ -129,6 +129,38 @@ form.delete-form {
     justify-content: center;
 }
 
+.attr-row {
+    display: flex;
+    align-items: center;
+}
+
+.attr-row form {
+    margin: 0;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.attr-row button {
+    display: inline-block;
+    margin: 0 0 0 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.attr-row input[type="text"] {
+    margin-right: 8px;
+}
+
+.modify-attr-btn {
+    background-color: orange;
+}
+
+.delete-attr-btn {
+    background-color: red;
+}
+
 .plan-info {
     background-color: #f9f9f9;
     padding: 20px;

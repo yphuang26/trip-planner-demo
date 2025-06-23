@@ -52,6 +52,33 @@ def add_attractions(trip_id, plan_id):
     plan = plans.find_one({'_id': ObjectId(plan_id)})
     return render_template('add_attractions.html', trip_id=trip_id, plan_id=plan_id, plan=plan, trip=trip)
 
+@app.route("/trip/<trip_id>/plan/<plan_id>/edit/<int:attr_index>", methods=['POST'])
+def edit_attraction(trip_id, plan_id, attr_index):
+    new_attraction = request.form['new_attraction']
+    plan = plans.find_one({'_id': ObjectId(plan_id)})
+    if plan and plan.get('trip_id') == trip_id:
+        attractions = plan.get('attractions', [])
+        if 0 <= attr_index < len(attractions):
+            attractions[attr_index] = new_attraction
+            plans.update_one(
+                {'_id': ObjectId(plan_id)},
+                {'$set': {'attractions': attractions}}
+            )
+    return redirect(url_for('add_attractions', trip_id=trip_id, plan_id=plan_id))
+
+@app.route("/trip/<trip_id>/plan/<plan_id>/delete/<int:attr_index>", methods=['POST'])
+def delete_attraction(trip_id, plan_id, attr_index):
+    plan = plans.find_one({'_id': ObjectId(plan_id)})
+    if plan and plan.get('trip_id') == trip_id:
+        attractions = plan.get('attractions', [])
+        if 0 <= attr_index < len(attractions):
+            attractions.pop(attr_index)
+            plans.update_one(
+                {'_id': ObjectId(plan_id)},
+                {'$set': {'attractions': attractions}}
+            )
+    return redirect(url_for('add_attractions', trip_id=trip_id, plan_id=plan_id))
+
 db = client.trip_planner
 trips = db.trips
 plans = db.plans
