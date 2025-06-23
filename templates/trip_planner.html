@@ -8,6 +8,10 @@
 </head>
 <body>
     <h1>Trip Plans</h1>
+    <div class="nav-buttons">
+        <button onclick="history.back()">BACK</button>
+        <a href="{{ url_for('index') }}"><button type="button">HOME</button></a>
+    </div>
     <div class="content">
         <h3>{{ trip['country'] }} -- {{ trip['city'] }}</h3>
         {% for plan in plans %}

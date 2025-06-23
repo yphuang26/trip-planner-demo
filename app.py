@@ -47,8 +47,10 @@ def add_attractions(trip_id, plan_id):
                 {'_id': ObjectId(plan_id)},
                 {'$push': {'attractions': attraction}}
             )
-        return redirect(url_for('trip_planner', id=trip_id))
-    return render_template('add_attractions.html', trip_id=trip_id, plan_id=plan_id)
+        return redirect(url_for('add_attractions', trip_id=trip_id, plan_id=plan_id))
+    trip = trips.find_one({'_id': ObjectId(trip_id)})
+    plan = plans.find_one({'_id': ObjectId(plan_id)})
+    return render_template('add_attractions.html', trip_id=trip_id, plan_id=plan_id, plan=plan, trip=trip)
 
 db = client.trip_planner
 trips = db.trips

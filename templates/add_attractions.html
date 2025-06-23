@@ -7,8 +7,22 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
 </head>
 <body>
-    <h1>Add Attraction</h1>
+    <h1>{{ trip['country'] }} -- {{ trip['city'] }}</h1>
+    <div class="nav-buttons">
+        <a href="{{ url_for('trip_planner', id=trip_id) }}"><button type="button">BACK</button></a>
+        <a href="{{ url_for('index') }}"><button type="button">HOME</button></a>
+    </div>
     <div class="content">
+        <div class="plan-info">
+            <p><b>Day {{ plan['day'] }}</b></p>
+            <ul>
+                {% for attr in plan['attractions'] %}
+                    <li>{{ attr }}</li>
+                {% else %}
+                    <li><i>No attractions yet.</i></li>
+                {% endfor %}
+            </ul>
+        </div>
         <form method="POST">
             <p>
                 <b><label for="attraction">Attraction Name:</label></b>

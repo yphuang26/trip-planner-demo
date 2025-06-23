@@ -112,6 +112,11 @@ a.trip {
     color: gray;
 }
 
+.plan:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    background-color: #f0f0f0;
+}
+
 .delete-btn {
     background-color: red;
 }
@@ -124,6 +129,29 @@ form.delete-form {
     justify-content: center;
 }
 
+.plan-info {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
 .add-btn {
     background-color: blue;
+}
+
+.nav-buttons {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.nav-buttons button {
+    margin: 0;
+    display: inline-block;
+    background-color: gray;
 }
