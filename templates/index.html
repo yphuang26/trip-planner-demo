@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trip Planner</title>
+    <!-- <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css"> -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+</head>
+<body>
+    <h1>Personal Trip Planner</h1>
+    <div class="content">
+        <form method="POST">
+            <p>
+                <b><label for="country">Country</label></b>
+            </p>
+            <p>
+                <input type="text" name="country" placeholder="Input The Country..." required>
+            </p>
+            <p>
+                <b><label for="city">City</label></b>
+            </p>
+            <p>
+                <input type="text" name="city" placeholder="Input The City..." required>
+            </p>
+            <p>
+                <b><label for="days">Days</label></b>
+            </p>
+            <p>
+                <select name="days" id="days" required>
+                    {% for i in range(1, 16) %}
+                        <option value="{{ i }}">{{ i }} 天</option>
+                    {% endfor %}
+                </select>
+            </p>
+            <button class="submit-btn" type="submit">Submit</button>
+        </form>
+        <hr>
+        {% for trip in trips %}
+        <a class="trip" href="{{ url_for('trip_planner', id=trip['_id']) }}">
+            <p> {{trip['country']}} -- {{trip['city']}} <i>({{trip['days']}} days)</i></p>
+        </a>
+        {% endfor %}
+    </div>
+</body>
+</html>
