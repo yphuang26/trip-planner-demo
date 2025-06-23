@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Attractions</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+</head>
+<body>
+    <h1>Add Attraction</h1>
+    <div class="content">
+        <form method="POST">
+            <p>
+                <b><label for="attraction">Attraction Name:</label></b>
+            </p>
+            <p>
+                <input type="text" id="attraction" name="attraction" required>
+            </p>
+            <button class="add-btn" type="submit">Add</button>
+        </form>
+    </div>
+</body>
+</html>

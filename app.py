@@ -37,6 +37,19 @@ def trip_planner(id):
     plans_for_trip = list(plans.find({"trip_id": id}))
     return render_template('trip_planner.html', trip=trip, plans=plans_for_trip)
 
+@app.route("/trip/<trip_id>/plan/<plan_id>", methods=['GET', 'POST'])
+def add_attractions(trip_id, plan_id):
+    if request.method == 'POST':
+        attraction = request.form['attraction']
+        plan = plans.find_one({'_id': ObjectId(plan_id)})
+        if plan and plan.get('trip_id') == trip_id:
+            plans.update_one(
+                {'_id': ObjectId(plan_id)},
+                {'$push': {'attractions': attraction}}
+            )
+        return redirect(url_for('trip_planner', id=trip_id))
+    return render_template('add_attractions.html', trip_id=trip_id, plan_id=plan_id)
+
 db = client.trip_planner
 trips = db.trips
 plans = db.plans

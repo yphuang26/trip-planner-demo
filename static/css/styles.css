@@ -34,6 +34,7 @@ form {
 
 form p {
     font-weight: bold;
+    text-align: center;
 }
 
 input[type="text"] {
@@ -44,18 +45,24 @@ input[type="text"] {
 }
 
 select {
-    width: 80px;
+    width: 70px;
     padding: 5px;
     border-radius: 5px;
 }
 
-.submit-btn {
-    background-color: green;
+button {
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    display: block;
+    margin: 20px auto 0 auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.submit-btn {
+    background-color: green;
 }
 
 .trip {
@@ -106,15 +113,7 @@ a.trip {
 }
 
 .delete-btn {
-    background-color: #f44336;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: block;
-    margin: 20px auto 0 auto;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: red;
 }
 
 form.delete-form {
@@ -123,4 +122,8 @@ form.delete-form {
     padding: 0;
     display: flex;
     justify-content: center;
+}
+
+.add-btn {
+    background-color: blue;
 }
